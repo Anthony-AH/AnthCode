@@ -227,7 +227,7 @@
         <a href="https://www.facebook.com/anthonio.atiquipa.fk/about" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-8 h-8 social-icon" alt="Facebook" />
         </a>
-        <a href="https://tiktok.com/@Diversión:)" target="_blank">
+        <a href="https://tiktok.com/@Diversión:" target="_blank">
           <div class="w-8 h-8 social-icon bg-[#00ff88] rounded flex items-center justify-center text-black font-bold text-xs">TT</div>
         </a>
         <a href="https://youtube.com/@tuperfil" target="_blank">
@@ -407,7 +407,7 @@
           <div class="project-video h-48 flex items-center justify-center">
             <div class="text-center text-gray-300">
               <div class="text-3xl mb-2"><!--videoproyec1-->
-                <img src="img/pro/Melypeluches.gif" alt="Tienda wueb de Melypeluches">
+                <img src="/img/pro/Melypeluches.gif" alt="Tienda wueb de Melypeluches">
               </div>
               <div class="text-sm">Diseño Creativo Pagina Venta de peluches</div>
             </div>
@@ -533,281 +533,7 @@
     </div>
   </div>
    
-    
-  <script>
-    // Menú responsive hamburguesa
-    const menuBtn = document.getElementById('menu-btn');
-    const navLinks = document.getElementById('nav-links');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('hidden');
-    });
-    // Cierra menú al hacer click en un enlace (en móvil)
-    document.querySelectorAll('#nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if(window.innerWidth < 768) navLinks.classList.add('hidden');
-      });
-    });
-
-    function toggleModal() {
-      const modal = document.getElementById("contactModal");
-      modal.classList.toggle("hidden");
-    }
-    // Smooth scroll-Desplazamiento suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Navbar scroll effect-Efecto de desplazamiento de la barra de navegación
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.nav-menu');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-    // Inicializar estrellas
-    function createStars(canvasId, count, speed) {
-      const canvas = document.getElementById(canvasId);
-      const ctx = canvas.getContext('2d');
-
-      let stars = [];
-
-    function generateStars() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        opacity: Math.random(),
-        twinkleOffset: Math.random() * 100,
-        twinkleSpeed: 0.05 + Math.random() * 0.05,
-    }));
-    }
-
-    generateStars(); // Al inicio
-    window.addEventListener('resize', () => {
-      generateStars(); // Al redimensionar, se regeneran con nuevo tamaño
-    });
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.font = canvasId === 'stars' ? '10px monospace' : '5px monospace';
-      stars.forEach((star) => {
-       const alpha = 0.3 + 0.7 * Math.abs(Math.sin(star.twinkleOffset));
-        ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
-        ctx.fillText('✦', star.x, star.y);
-      });
-    }
-
-    function update() {
-      stars.forEach((star) => {
-       star.y -= speed;
-        if (star.y < 0) star.y = canvas.height;
-        star.twinkleOffset += star.twinkleSpeed;
-      });
-    }
-
-    function animate() {
-      draw();
-      update();
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-    }
-
-  
-  // Inicializar animación cuando se carga la página
-  //window.addEventListener('load', initStars);
-  
-  // Animación de las barras de habilidades al hacer scroll
-  function animateSkills() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const skillsSection = document.getElementById('habilidades');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0%';
-            setTimeout(() => {
-              bar.style.width = width;
-            }, 500);
-          });
-        }
-      });
-    });
-    
-    observer.observe(skillsSection);
-  }
-  
-  // Inicializar animación de habilidades
-  animateSkills(); 
-  
-  // Efecto de typing en el texto principal
-  function typeWriter() {
-    const text = "Transformo conceptos en soluciones digitales que inspiran, conectan y destacan.";
-    const element = document.querySelector('#inicio p');
-    let i = 0;
-    
-    function type() {
-      if (i < text.length) {
-        element.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
-        i++;
-        setTimeout(type, 50);
-      } else {
-        element.innerHTML = text;
-      }
-    }
-    
-    // Agregar estilos para el cursor
-    const style = document.createElement('style');
-    style.textContent = `
-      .cursor {
-        animation: blink 1s infinite;
-        color: #00ff88;
-      }
-      @keyframes blink {
-        0%, 50% { opacity: 1; }
-        51%, 100% { opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    setTimeout(type, 2000);
-  }
-  
-  // Inicializar efecto de typing
-  window.addEventListener('load', typeWriter);
-  
-  // Validación del formulario de contacto
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const inputs = form.querySelectorAll('input[required], textarea[required]');
-      let isValid = true;
-      
-      inputs.forEach(input => {
-        if (!input.value.trim()) {
-          isValid = false;
-          input.style.borderColor = '#ff4444';
-          
-          setTimeout(() => {
-            input.style.borderColor = '#374151';
-          }, 2000);
-        }
-      });
-      
-      if (isValid) {
-        // Aquí puedes agregar la lógica para enviar el formulario
-        alert('¡Mensaje enviado correctamente! Te contactaré pronto.');
-        form.reset();
-        if (form.closest('#contactModal')) {
-          toggleModal();
-        }
-      }
-    });
-  });
-  
-  // Efecto parallax suave en el scroll
-  window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.glow-green');
-    
-    parallaxElements.forEach(element => {
-      const speed = 0.3;//seguimiento de img derechaprinci
-      element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-  });
-  
-  // Animación de entrada para las tarjetas
-  function animateCards() {
-    const cards = document.querySelectorAll('.card-glow');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    });
-    
-    cards.forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(50px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(card);
-    });
-  }
-  
-  // Inicializar animación de tarjetas
-  window.addEventListener('load', animateCards);
-  
-  // Contador animado para los porcentajes de habilidades
-  function animateCounters() {
-    const counters = document.querySelectorAll('.skill-progress');
-    
-    counters.forEach(counter => {
-      const targetWidth = parseInt(counter.style.width);
-      let currentWidth = 0;
-      
-      const increment = targetWidth / 100;
-      
-      const timer = setInterval(() => {
-        currentWidth += increment;
-        if (currentWidth >= targetWidth) {
-          currentWidth = targetWidth;
-          clearInterval(timer);
-        }
-        counter.style.width = currentWidth + '%';
-      }, 20);
-    });
-  }
-
-
-
-  // Cerrar modal al hacer clic fuera de él
-  document.getElementById('contactModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      toggleModal();
-    }
-  });
-  
-  // Cerrar modal con tecla ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const modal = document.getElementById('contactModal');
-      if (!modal.classList.contains('hidden')) {
-        toggleModal();
-      }
-    }
-  });
-    // Inicializar animaciones al cargar la página
-    window.addEventListener('load', () => {
-      animateCards();
-      animateCounters();
-    });
-  createStars('stars', 100, 0.4);// 0.2 es la velocidad de la primera capa
-  createStars('stars2', 150, 1.0); // 0.4 es la velocidad de la segunda capa
-  </script>
-
-
-
-</div>
-<!-- Botón flotante de WhatsApp -->
+   <!-- Botón flotante de WhatsApp -->
 <button id="whatsapp-btn" class="fixed bottom-6 right-6 z-50 bg-[#00ff88] text-black p-4 rounded-full shadow-lg hover:bg-green-400 transition">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="w-6 h-6" />
 </button>
@@ -825,6 +551,345 @@
       </div>
     </form>
   </div>
-  <script src="script.js" defer></script>                                   
+    
+   <!-- Scripts optimizados para GitHub Pages tiene un detalle la simulcaion d escritura al cargar ña ágina uy no funcin-->
+  <script>
+    // Función para cargar scripts de forma asíncrona
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = callback;
+      document.body.appendChild(script);
+    }
+
+     // Esperar a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Menú responsive
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if(window.innerWidth < 768) navLinks.classList.add('hidden');
+                });
+            });
+        }
+
+        // 2. Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 3. Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-menu');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // 4. Efecto de typing en el texto principal
+        function typeWriter() {
+            const text = "Transformo conceptos en soluciones digitales que inspiran, conectan y destacan.";
+            const element = document.querySelector('#inicio p');
+            if (!element) return;
+            
+            // Guardar el texto original
+            const originalHTML = element.innerHTML;
+            const originalText = element.textContent || element.innerText;
+            
+            // Limpiar el elemento para la animación
+            element.innerHTML = '';
+            
+            let i = 0;
+            const speed = 50; // Velocidad de escritura en ms
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // Restaurar el texto original después de un tiempo
+                    setTimeout(() => {
+                        element.innerHTML = originalHTML;
+                        // Volver a iniciar la animación después de 5 segundos
+                        setTimeout(typeWriter, 5000);
+                    }, 3000);
+                }
+            }
+            
+            // Agregar estilos para el cursor si no existen
+            if (!document.getElementById('typing-cursor-style')) {
+                const style = document.createElement('style');
+                style.id = 'typing-cursor-style';
+                style.textContent = `
+                    .cursor {
+                        animation: blink 1s infinite;
+                        color: #00ff88;
+                    }
+                    @keyframes blink {
+                        0%, 50% { opacity: 1; }
+                        51%, 100% { opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Iniciar la animación
+            type();
+        }
+        typeWriter();
+
+        // 5. WhatsApp Button Functionality
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        const whatsappModal = document.getElementById('whatsapp-modal');
+        const waCloseBtn = document.getElementById('wa-close');
+        const waForm = document.getElementById('whatsapp-form');
+        
+        if (whatsappBtn && whatsappModal && waCloseBtn && waForm) {
+            const phoneNumber = '51942584952';
+            const defaultMessage = 'Hola AnthCode, vi tu portafolio y me gustaría hablar sobre un proyecto...';
+            
+            function toggleWhatsAppModal() {
+                whatsappModal.classList.toggle('hidden');
+            }
+            
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleWhatsAppModal();
+            });
+            
+            waCloseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleWhatsAppModal();
+            });
+            
+            whatsappModal.addEventListener('click', function(e) {
+                if (e.target === whatsappModal) {
+                    toggleWhatsAppModal();
+                }
+            });
+            
+            waForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('wa-name').value;
+                const message = document.getElementById('wa-message').value;
+                const fullMessage = `*${name}* te escribe desde tu portafolio:\n\n${message || defaultMessage}`;
+                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`, '_blank');
+                toggleWhatsAppModal();
+                waForm.reset();
+            });
+            
+            // Button pulse animation
+            setInterval(() => {
+                whatsappBtn.classList.toggle('animate-pulse');
+            }, 2000);
+            
+            // Close with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !whatsappModal.classList.contains('hidden')) {
+                    toggleWhatsAppModal();
+                }
+            });
+            
+            // Efecto flotante para el botón
+            function floatAnimation() {
+                whatsappBtn.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    whatsappBtn.style.transform = 'translateY(0)';
+                }, 1000);
+            }
+            setInterval(floatAnimation, 2000);
+            
+            // Tooltip
+            whatsappBtn.setAttribute('title', '¡Contáctame por WhatsApp!');
+        }
+
+        // 6. Efecto de estrellas
+        function createStars(canvasId, count, speed) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+
+            function initStars() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                stars = Array.from({ length: count }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    opacity: Math.random(),
+                    twinkleOffset: Math.random() * 100,
+                    twinkleSpeed: 0.05 + Math.random() * 0.05,
+                }));
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = canvasId === 'stars' ? '10px monospace' : '5px monospace';
+                stars.forEach((star) => {
+                    const alpha = 0.3 + 0.7 * Math.abs(Math.sin(star.twinkleOffset));
+                    ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+                    ctx.fillText('✦', star.x, star.y);
+                });
+            }
+
+            function update() {
+                stars.forEach((star) => {
+                    star.y -= speed;
+                    if (star.y < 0) star.y = canvas.height;
+                    star.twinkleOffset += star.twinkleSpeed;
+                });
+            }
+
+            function animate() {
+                draw();
+                update();
+                requestAnimationFrame(animate);
+            }
+
+            initStars();
+            animate();
+            window.addEventListener('resize', initStars);
+        }
+        createStars('stars', 100, 0.4);
+        createStars('stars2', 150, 1.0);
+
+        // 7. Animación de habilidades
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsSection = document.getElementById('habilidades');
+            
+            if (skillBars.length && skillsSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            skillBars.forEach(bar => {
+                                const width = bar.style.width;
+                                bar.style.width = '0%';
+                                setTimeout(() => {
+                                    bar.style.width = width;
+                                }, 500);
+                            });
+                        }
+                    });
+                });
+                
+                observer.observe(skillsSection);
+            }
+        }
+        animateSkills();
+
+        // 8. Animación de tarjetas
+        function animateCards() {
+            const cards = document.querySelectorAll('.card-glow');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+        animateCards();
+
+        // 9. Validación del formulario de contacto
+        const contactForm = document.querySelector('#contactModal form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = '#ff4444';
+                        
+                        setTimeout(() => {
+                            input.style.borderColor = '#374151';
+                        }, 2000);
+                    }
+                });
+                
+                if (isValid) {
+                    alert('¡Mensaje enviado correctamente! Te contactaré pronto.');
+                    contactForm.reset();
+                    toggleModal();
+                }
+            });
+        }
+    });
+
+    // Función global para el modal de contacto
+    function toggleModal() {
+        const modal = document.getElementById("contactModal");
+        if (modal) {
+            modal.classList.toggle("hidden");
+        }
+    }
+
+     // Cerrar modal al hacer clic fuera de él
+  document.getElementById("contactModal").addEventListener("click", function(e) {
+    if (e.target === this) {
+      toggleModal();
+    }
+  });
+
+  // Cerrar modal con tecla ESC
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      const modal = document.getElementById("contactModal");
+      if (modal && !modal.classList.contains("hidden")) {
+        toggleModal();
+      }
+    }
+  });
+    // Asegurar que todas las funciones estén disponibles globalmente si es necesario
+    window.toggleModal = toggleModal;
+
+    // Efecto parallax suave en el scroll
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.glow-green');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.3;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+   
+  </script>
+
 </body>
 </html>
