@@ -40,16 +40,38 @@
       left: 0;
       z-index: -2;
     }
-    .glow-green {
+    /*animaciones del globo img*/
+  .glow-green {
+  border-radius: 9999px;
+  box-shadow:
+    0 0 8px rgba(0,255,136,0.6),
+    0 0 24px rgba(0,255,136,0.8);
+  animation: greenPulse 8s linear infinite;/*3*/
+}
+
+@keyframes greenPulse {
+  0%{
+    box-shadow: 0 0 8px rgba(0,255,136,0.6), 0 0 24px rgba(0,255,136,0.8);
+    transform: rotate(0deg);
+  }
+  0%, 100%  {
+    box-shadow: 0 0 28px rgba(0,255,136,0.8), 0 0 48px rgba(0,255,136,1);
+  }
+  80%{
+    transform: rotate(360deg);
+    box-shadow: 0 0 8px rgba(0,255,136,0.6), 0 0 24px rgba(0,255,136,0.8);
+  }
+}
+    /*.glow-green {
       border-radius: 9999px;
       box-shadow: 0 0 12px #00ff88, 0 0 24px #00ff88;
       animation: greenPulse 2.5s infinite;
 
-    }
-    @keyframes greenPulse {
+    } 
+    /*@keyframes greenPulse {
       0%, 100% { box-shadow: 0 0 12px #00ff88, 0 0 24px #00ff88; }
-      50% { box-shadow: 0 0 24px #00ff88, 0 0 48px #00ff88; }
-    }
+      80% { box-shadow: 0 0 24px #00ff88, 0 0 48px #00ff88; }
+    }*/
     .social-icon {
       transition: transform 0.3s ease, filter 0.3s ease;
     }
@@ -174,6 +196,12 @@
         height: 12rem;
       }
     }
+
+    @media (max-width: 639px) {
+    .columna3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -201,7 +229,7 @@
           <a href="#sobre-mi" class="nav-link block py-3 md:py-0">Sobre Mí</a>
           <a href="#habilidades" class="nav-link block py-3 md:py-0">Habilidades</a>
           <a href="#servicios" class="nav-link block py-3 md:py-0">Servicios</a>
-          <a href="#proyectos" class="nav-link block py-3 md:py-0">Proyectos</a>
+          <a href="#trabajos" class="nav-link block py-3 md:py-0">Trabajos</a>
           <a href="#contacto" class="nav-link block py-3 md:py-0">Contacto</a>
         </div>
       </div>
@@ -212,7 +240,7 @@
   <section id="inicio" class="min-h-screen flex flex-col md:flex-row justify-center items-center text-center px-6 md:px-20 pt-20">
     <!-- Texto Izquierda -->
     <div class="flex-1 space-y-6 max-w-xl">
-      <h2 class="text-4xl font-bold">Hello, I'm <span class="text-[#00ff88]">Anth Code</span></h2>
+      <h2 class="text-4xl font-bold">Hola soy <span class="text-[#00ff88]">Anth Code</span></h2>
       <h3 class="text-2xl">Web Developer</h3>
       <p class="leading-relaxed text-gray-300">
         Bienvenido a mi portafolio.
@@ -222,23 +250,23 @@
         ✨ Transformo conceptos en soluciones digitales que inspiran, conectan y destacan.
       
       </p>
-      <button onclick="toggleModal()" class="bg-[#00ff88] text-black py-2 px-5 rounded-full font-semibold inline-block hover:bg-green-400 transition-colors">💬 Contáctame</button>
+      <button class="bg-[#00ff88] text-black py-2 px-5 rounded-full font-semibold inline-block hover:bg-green-400 transition-colors">💬 Sigueme</button><!--onclick="toggleModal()"-->
       <div class="flex justify-center gap-4 mt-6">
-        <a href="https://www.facebook.com/anthonio.atiquipa.fk/about" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-8 h-8 social-icon" alt="Facebook" />
+        <a href="https://tiktok.com/@Diversión:" target="_blank">       
+          <div class="w-8 h-8 social-icon bg-[#00ff88] rounded flex items-center justify-center text-black font-bold text-xs">
+          <i class="fa-brands fa-tiktok"></i>
+          </div>
         </a>
-        <a href="https://tiktok.com/@Diversión:" target="_blank">
-          <div class="w-8 h-8 social-icon bg-[#00ff88] rounded flex items-center justify-center text-black font-bold text-xs">TT</div>
-        </a>
-        <a href="https://youtube.com/@tuperfil" target="_blank">
+        <!--
+        <a href="#" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="w-8 h-8 social-icon" alt="YouTube" />
         </a>
-        <a href="https://linkedin.com/in/tuperfil" target="_blank">
+        <a href="#" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/5968/5968853.png" class="w-8 h-8 social-icon" alt="LinkedIn"  />
         </a>
         <a href="https://wa.me/51942584952" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-8 h-8 social-icon" alt="WhatsApp" />
-        </a>
+        </a>-->
       </div>
     </div>
     <!-- Imagen Derecha -->
@@ -398,11 +426,12 @@
   </section>
 
   <!-- Sección Proyectos -->
-  <section id="proyectos" class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-20">
+  <section id="trabajos" class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-20">
     <div class="max-w-6xl w-full text-center ">
-      <h2 class="text-4xl font-bold text-center mb-16 section-title">Mis Trabajos Realizados</h2>
+      <h2 class="text-4xl font-bold text-center mb-16 section-title">Mis Trabajos Realizados, landing page</h2>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8"><!--2 columnas en panlla pequeñas-->
+      <!--<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">-->
         <div class="card-glow rounded-lg overflow-hidden">
           <div class="project-video h-48 flex items-center justify-center">
             <div class="text-center text-gray-300">
@@ -416,7 +445,7 @@
             <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Pagina Web para tienda de Peluches</h3>
             <p class="text-gray-300 text-sm mb-4">Tiene un sistema de pedidos en línea, con formulario de agregar a carrito, Integración de WhatsApp para el envío de pedidos, completamente responsive.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
               
               <a href="#" class="text-[#00ff88] hover:underline text-sm">Apoya al creador🍦</a>
             </div>
@@ -439,7 +468,7 @@
             <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Pagina web para restaurante</h3>
             <p class="text-gray-300 text-sm mb-4">Con sistema de pedidos en línea, Integración de WhatsApp para el envío de pedidos, completamente responsive.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
               
               <a href="#" class="text-[#00ff88] hover:underline text-sm">Apoya al creador🍦</a>
             </div>
@@ -462,16 +491,98 @@
             <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Portfolio Creativo</h3>
             <p class="text-gray-300 text-sm mb-4">Sitio web portfolio con animaciones avanzadas y diseño responsivo para artista digital.</p>
             <div class="flex gap-3">
-              <a href="#" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
-              
+              <!--<a href="#" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>-->
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>
+
               <a href="#" class="text-[#00ff88] hover:underline text-sm">Apoya al creador🍦</a>
             </div>
           </div>
         </div>
+
       </div>
+      
+
     </div>
   </section>
 
+  <!--otros productos-->
+  <section id="animaciones" class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-20">
+  <div class="max-w-6xl w-full text-center ">
+      <h2 class="text-4xl font-bold text-center mb-16 section-title">Animaciones Especiales</h2>
+
+    <div class="columna3 grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div class="card-glow rounded-lg overflow-hidden">
+          <div class="project-video h-48 flex items-center justify-center">
+            <div class="text-center text-gray-300">
+              <div class="text-3xl mb-2"><!--videoproyec1-->
+                <img src="/img/pro/Melypeluches.gif" alt="Tienda wueb de Melypeluches">
+              </div>
+              <div class="text-sm">Diseño Creativo Pagina Venta de peluches</div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Pagina Web para tienda de Peluches</h3>
+            <p class="text-gray-300 text-sm mb-4">Tiene un sistema de pedidos en línea, con formulario de agregar a carrito, Integración de WhatsApp para el envío de pedidos, completamente responsive.</p>
+            <div class="flex gap-3">
+              <a href="#" target="_blank" class="text-[#00ff88] hover:underline text-sm">$1</a>
+              
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">Comprar🍦</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-glow rounded-lg overflow-hidden">
+          <div class="project-video h-48 flex items-center justify-center">
+            <div class="text-center text-gray-300">
+              <div class="text-3xl mb-2"><!--proyectvideo2-->
+                <video autoplay loop muted playsinline controls width="640" height="360">
+                <source src="img/pro/Tienda-restaurante.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+                </video>             
+              </div>
+              <div class="text-sm">Diseño moderno pagina informativa-ventas</div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Pagina web para restaurante</h3>
+            <p class="text-gray-300 text-sm mb-4">Con sistema de pedidos en línea, Integración de WhatsApp para el envío de pedidos, completamente responsive.</p>
+            <div class="flex gap-3">
+              <a href="#" target="_blank" class="text-[#00ff88] hover:underline text-sm">1$</a>
+              
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">Comprar🍦</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-glow rounded-lg overflow-hidden">
+          <div class="project-video h-48 flex items-center justify-center">
+            <div class="text-center text-gray-300">
+              <div class="text-3xl mb-2"><!--trabajo Web 3-->
+                <video autoplay loop muted playsinline controls width="640" height="360">
+                <source src="img/pro/portafo-arquitectu-Nuby.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+                </video>
+              </div>
+              <div class="text-sm">Video/GIF del Proyecto 3</div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-3 text-[#00ff88]">Portfolio Creativo</h3>
+            <p class="text-gray-300 text-sm mb-4">Sitio web portfolio con animaciones avanzadas y diseño responsivo para artista digital.</p>
+            <div class="flex gap-3">
+              <!--<a href="#" class="text-[#00ff88] hover:underline text-sm">CotizarProyecto</a>-->
+              <a href="#" class="text-[#00ff88] hover:underline text-sm">$3</a>
+
+              <a href="https://wa.me/51942584952" target="_blank" class="text-[#00ff88] hover:underline text-sm">Comprar🍦</a>
+            </div>
+          </div>
+        </div>
+
+ 
+    </div><!--3columss-->
+  </div>
+  </section>
+  
   <!-- Sección Contacto -->
   <section id="contacto" class="min-h-screen flex flex-col justify-center items-center px-6 md:px-10 py-10 ">
     <div class="max-w-4xl w-full text-center">
@@ -483,7 +594,7 @@
         <div class="space-y-6">
           <div class="flex items-center justify-center md:justify-start gap-4">
             <div class="w-12 h-12 bg-[#00ff88] rounded-full flex items-center justify-center">
-              <span class="text-black">📧</span>
+              <span class="text-black"><i class="fa-solid fa-envelope"></i></span>
             </div>
             <div>
               <h3 class="text-[#00ff88] font-semibold">Email</h3>
@@ -493,7 +604,7 @@
           
           <div class="flex items-center justify-center md:justify-start gap-4">
             <div class="w-12 h-12 bg-[#00ff88] rounded-full flex items-center justify-center">
-              <span class="text-black">📱</span>
+              <span class="text-black"><i class="fa-solid fa-phone"></i></span>
             </div>
             <div>
               <h3 class="text-[#00ff88] font-semibold">Teléfono</h3>
@@ -799,28 +910,16 @@
             }
         }
         animateSkills();
-
-        // 8. Animación de tarjetas
-        function animateCards() {
-            const cards = document.querySelectorAll('.card-glow');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
+        // Efecto parallax suave en el scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.glow-green');
+        
+             parallaxElements.forEach(element => {
+                const speed = 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
             });
-            
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-        }
-        animateCards();
+        });
 
         // 9. Validación del formulario de contacto
         const contactForm = document.querySelector('#contactModal form');
@@ -878,16 +977,7 @@
     // Asegurar que todas las funciones estén disponibles globalmente si es necesario
     window.toggleModal = toggleModal;
 
-    // Efecto parallax suave en el scroll
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.glow-green');
-        
-        parallaxElements.forEach(element => {
-            const speed = 0.3;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
+    
    
   </script>
 
